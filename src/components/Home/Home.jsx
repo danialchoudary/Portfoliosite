@@ -68,7 +68,7 @@ const Home = () => {
           Click the button below to download my CV and learn more about my skills and experience.
         </p>
         <a 
-          href="CV.pdf" 
+          href='/CV.pdf' 
           download 
           className="inline-flex items-center bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
         >
