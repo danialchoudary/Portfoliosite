@@ -22,7 +22,7 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Hi, I'm Danial Ch
+        Hi, I'm Danial Choudary
       </motion.h1>
       <Typing 
         text={["Frontend Developer", "React.js Enthusiast", "Responsive Designs"]} 
