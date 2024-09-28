@@ -4,20 +4,21 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faCode, faEnvelope, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
+import './glow.css';
 
 const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-center p-4 relative top-16">
       <motion.img
-        src="https://images.pexels.com/photos/5483064/pexels-photo-5483064.jpeg?auto=compress&cs=tinysrgb&w=600" 
-        alt="Profile" 
-        className="w-32 h-32 rounded-full shadow-lg mb-4 border-4 border-blue-500"
+        src="https://images.pexels.com/photos/5483064/pexels-photo-5483064.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="Profile"
+        className="rounded-full shadow-lg mb-4 glowing-border"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1 }}
       />
       <motion.h1 
-        className="text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+        className="text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -44,21 +45,21 @@ const Home = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
       >
-        <Link to="/about" className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition duration-300">
+        <Link to="/about" className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition duration-300 hover:scale-105 transform">
           <FontAwesomeIcon icon={faUserCircle} className="w-6 h-6" />
           <span>About Me</span>
         </Link>
-        <Link to="/projects" className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition duration-300">
+        <Link to="/projects" className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition duration-300 hover:scale-105 transform">
           <FontAwesomeIcon icon={faCode} className="w-6 h-6" />
           <span>Projects</span>
         </Link>
-        <Link to="/contact" className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition duration-300">
+        <Link to="/contact" className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition duration-300 hover:scale-105 transform">
           <FontAwesomeIcon icon={faEnvelope} className="w-6 h-6" />
           <span>Contact</span>
         </Link>
       </motion.div>
       <motion.div 
-        className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mb-8"
+        className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mb-8 glowing-border"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
@@ -70,7 +71,7 @@ const Home = () => {
         <a 
           href='/CV.pdf' 
           download 
-          className="inline-flex items-center bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+          className="inline-flex items-center bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 transform hover:scale-105"
         >
           <FontAwesomeIcon icon={faDownload} className="w-5 h-5 mr-2" />
           <span>Download CV</span>
@@ -82,37 +83,45 @@ const Home = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
       >
-        <div className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-          <h3 className="text-xl font-bold text-blue-400 mb-2">Expertise</h3>
-          <ul className="text-gray-300">
-            <li>- React.js Development</li>
-            <li>- Responsive Web Design</li>
-            <li>- JavaScript & ES6+</li>
-            <li>- Tailwind CSS</li>
-            <li>- API Integration</li>
-          </ul>
-        </div>
-        <div className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-          <h3 className="text-xl font-bold text-blue-400 mb-2">Experience</h3>
-          <ul className="text-gray-300">
-            <li>- 1+ year in Frontend Development</li>
-            <li>- Built and maintained multiple web applications</li>
-            <li>- Collaborated with cross-functional teams</li>
-          </ul>
-        </div>
-        <div className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-          <h3 className="text-xl font-bold text-blue-400 mb-2">Education</h3>
-          <ul className="text-gray-300">
-            <li>- Bachelor's in Software Engineering</li>
-            <li>- Certified React Developer</li>
-            <li>- Continuous learning and upskilling</li>
-          </ul>
-        </div>
+        {['Expertise', 'Experience', 'Education'].map((section, index) => (
+          <div 
+            key={index} 
+            className="p-4 bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 glowing-border"
+          >
+            <h3 className="text-xl font-bold text-blue-400 mb-2 animate-bounce">{section}</h3>
+            <ul className="text-gray-300">
+              {section === 'Expertise' && (
+                <>
+                  <li>- React.js Development</li>
+                  <li>- Responsive Web Design</li>
+                  <li>- JavaScript & ES6+</li>
+                  <li>- Tailwind CSS</li>
+                  <li>- API Integration</li>
+                </>
+              )}
+              {section === 'Experience' && (
+                <>
+                  <li>- 1+ year in Frontend Development</li>
+                  <li>- Built and maintained multiple web applications</li>
+                  <li>- Collaborated with cross-functional teams</li>
+                </>
+              )}
+              {section === 'Education' && (
+                <>
+                  <li>- Bachelor's in Software Engineering</li>
+                  <li>- Certified React Developer</li>
+                  <li>- Continuous learning and upskilling</li>
+                </>
+              )}
+            </ul>
+          </div>
+        ))}
       </motion.div>
     </div>
   );
 };
 
 export default Home;
+
 
 
