@@ -104,7 +104,7 @@ const About = () => {
             I’m always open to discussing new opportunities or collaborating on exciting projects. Feel free to reach out to me.
           </p>
           <a 
-            href="../Contact/Contact" 
+            href="../Contact/contact" 
             className="inline-flex items-center bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
           >
             <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 mr-2" />
