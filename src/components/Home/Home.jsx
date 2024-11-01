@@ -13,13 +13,11 @@ const Home = () => {
         src="https://images.pexels.com/photos/5483064/pexels-photo-5483064.jpeg?auto=compress&cs=tinysrgb&w=600"
         alt="Profile"
         className="rounded-full shadow-lg mb-4 glowing-border"
-        initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1 }}
       />
       <motion.h1 
         className="text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"
-        initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
@@ -33,7 +31,6 @@ const Home = () => {
       />
       <motion.p 
         className="text-lg text-gray-300 max-w-2xl mb-8"
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
@@ -41,7 +38,6 @@ const Home = () => {
       </motion.p>
       <motion.div 
         className="flex space-x-6 mb-8"
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
       >
@@ -60,7 +56,6 @@ const Home = () => {
       </motion.div>
       <motion.div 
         className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mb-8 glowing-border"
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
       >
@@ -79,7 +74,6 @@ const Home = () => {
       </motion.div>
       <motion.div 
         className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-4xl"
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
       >
