@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-// import axios from 'axios';
 
 const contactVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -39,20 +38,32 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/send', formData);
-      if (response.data.success) {
-        setSuccessMessage('Message sent successfully! 🎉');
-        setFormData({
-          name: '',
-          email: '',
-          message: ''
-        });
+      const response = await fetch('http://localhost:5000/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setSuccessMessage('Message sent successfully! 🎉');
+          setFormData({
+            name: '',
+            email: '',
+            message: ''
+          });
+        } else {
+          setErrorMessage('Error sending message. Please try again later. 😞');
+        }
       } else {
         setErrorMessage('Error sending message. Please try again later. 😞');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setErrorMessage('Error sending message. Please try again later. 😞');
+      setErrorMessage('Network error. Please check your connection and try again. 😞');
     }
   };
 
@@ -88,7 +99,7 @@ const Contact = () => {
             </div>
             <div className="flex items-center">
               <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-500 w-6 h-6 mr-2" />
-              <p className="text-gray-400">Haripur ,Pakistan</p>
+              <p className="text-gray-400">Haripur, Pakistan</p>
             </div>
           </motion.div>
           <motion.form

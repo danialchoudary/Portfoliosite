@@ -10,12 +10,13 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-center p-4 relative top-16">
       <motion.img
-        src="https://images.pexels.com/photos/5483064/pexels-photo-5483064.jpeg?auto=compress&cs=tinysrgb&w=600"
-        alt="Profile"
-        className="rounded-full shadow-lg mb-4 glowing-border"
-        animate={{ scale: 1 }}
-        transition={{ duration: 1 }}
-      />
+  src="https://images.pexels.com/photos/5483064/pexels-photo-5483064.jpeg?auto=compress&cs=tinysrgb&w=600"
+  alt="Profile"
+  className="w-64 h-64 rounded-full shadow-lg mb-4 glowing-border"
+  animate={{ scale: 1 }}
+  transition={{ duration: 1 }}
+/>
+
       <motion.h1 
         className="text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"
         animate={{ opacity: 1, y: 0 }}

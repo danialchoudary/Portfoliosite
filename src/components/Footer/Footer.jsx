@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTwitter, faLinkedin, faGithub,faInstagram,faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -27,9 +27,11 @@ const Footer = () => {
         >
           {[
             { icon: faFacebook, link: 'https://web.facebook.com/profile.php?id=100087134287105' },
-            // { icon: faTwitter, link: 'https://twitter.com' },
+           
             { icon: faLinkedin, link: 'https://linkedin.com/in/danial-choudary-006b922a8' },
-            { icon: faGithub, link: 'https://github.com/danialchoudary' }
+            { icon: faGithub, link: 'https://github.com/danialchoudary' },
+            { icon: faInstagram, link: 'https://www.instagram.com/choudary_danial/' },
+            { icon: faWhatsapp, link: 'https://wa.me/923165320767' } 
           ].map((social, index) => (
             <motion.a
               key={index}
@@ -58,9 +60,9 @@ const Footer = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-          <a href="/privacy-policy" className="hover:text-blue-500 transition duration-300">Privacy Policy</a>
+          {/* <a href="/privacy-policy" className="hover:text-blue-500 transition duration-300">Privacy Policy</a>
           <a href="/terms-of-service" className="hover:text-blue-500 transition duration-300">Terms of Service</a>
-          <a href="/contact" className="hover:text-blue-500 transition duration-300">Contact</a>
+          <a href="/contact" className="hover:text-blue-500 transition duration-300">Contact</a> */}
         </motion.div>
       </div>
     </footer>

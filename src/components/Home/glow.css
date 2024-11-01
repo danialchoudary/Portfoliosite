@@ -1,81 +1,56 @@
 @keyframes glow {
-    0% {
-      box-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #00f, 0 0 20px #00f, 0 0 25px #00f;
-    }
-    50% {
-      box-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #00f, 0 0 50px #00f;
-    }
-    100% {
-      box-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #00f, 0 0 20px #00f, 0 0 25px #00f;
-    }
+  0% {
+    box-shadow: 0 0 3px #00f, 0 0 6px #00f, 0 0 9px #00f, 0 0 12px #00f, 0 0 15px #00f;
   }
-  
-  .glowing-border {
-    border-radius: 50%;
-    border: 4px solid #00f;
-    animation: glow 2s infinite ease-in-out;
+  50% {
+    box-shadow: 0 0 8px #00f, 0 0 16px #00f, 0 0 24px #00f, 0 0 32px #00f, 0 0 40px #00f;
   }
+  100% {
+    box-shadow: 0 0 3px #00f, 0 0 6px #00f, 0 0 9px #00f, 0 0 12px #00f, 0 0 15px #00f;
+  }
+}
 
-  @keyframes borderGlow {
-    0% {
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.7), 0 0 10px rgba(0, 123, 255, 0.7);
-    }
-    50% {
-      box-shadow: 0 0 10px rgba(0, 123, 255, 0.7), 0 0 20px rgba(0, 123, 255, 0.7);
-    }
-    100% {
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.7), 0 0 10px rgba(0, 123, 255, 0.7);
-    }
+.glowing-border {
+  /* Removed border-radius to keep rectangular shape */
+  border: 4px solid #00f;
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Optional: Adjusted glow effect with lower intensity */
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.4), 0 0 5px rgba(0, 123, 255, 0.4);
   }
-  
-  .glowing-border {
-    border: 4px solid rgba(0, 123, 255, 0.7);
-    border-radius: 8px;
-    animation: borderGlow 2s infinite ease-in-out;
+  50% {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.4), 0 0 12px rgba(0, 123, 255, 0.4);
   }
-  
-  /* .glowing-border {
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    position: relative;
-  } */
-  
-  .glowing-border:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
-    z-index: -1;
-    filter: blur(10px);
+  100% {
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.4), 0 0 5px rgba(0, 123, 255, 0.4);
   }
-  
-  .animate-pulse {
-    animation: pulse 2s infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
   }
-  
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
+  50% {
+    transform: scale(1.05);
   }
-  
-  .animate-bounce {
-    animation: bounce 1s infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+  50% {
+    transform: translateY(-10px);
   }
-  
+}
