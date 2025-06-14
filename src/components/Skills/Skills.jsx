@@ -42,6 +42,7 @@ const Skill = ({ name, icon, percentage }) => (
 
 const Skills = () => {
   return (
+    <section id="skills" className="py-16 bg-gray-900 text-white">
     <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-center py-16 px-4">
       <motion.div
         className="container mx-auto max-w-6xl"
@@ -69,6 +70,7 @@ const Skills = () => {
         </div>
       </motion.div>
     </div>
+    </section>
   );
 };
 

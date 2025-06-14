@@ -6,6 +6,8 @@ import Contact from '../Contact/Contact';
 
 const About = () => {
   return (
+  <>
+    <section id="about" className="relative top-16">
     <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-center py-16 px-4">
       <motion.div 
         className="container mx-auto max-w-6xl space-y-12"
@@ -93,7 +95,7 @@ const About = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        {/* <motion.div 
           className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md mx-auto mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -110,9 +112,11 @@ const About = () => {
             <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 mr-2" />
             <span>Contact Me</span>
           </a>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </div>
+    </section>
+    </>
   );
 };
 

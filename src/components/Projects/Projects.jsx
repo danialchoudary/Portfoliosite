@@ -32,6 +32,7 @@ const Projects = () => {
   ];
 
   return (
+    <section id="projects" className="">
     <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-center py-16 px-4">
       <motion.div 
         className="container mx-auto max-w-6xl"
@@ -74,6 +75,7 @@ const Projects = () => {
         </div>
       </motion.div>
     </div>
+    </section>
   );
 };
 

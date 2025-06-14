@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -7,6 +6,18 @@ const Navbar = () => {
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
+  };
+
+  // Function to handle smooth scrolling to sections
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsOpen(false); // Close mobile menu after clicking
   };
 
   const menuVariants = {
@@ -25,22 +36,23 @@ const Navbar = () => {
   };
 
   const links = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/about' },
-    { name: 'Projects', to: '/projects' },
-    { name: 'Skills', to: '/skills' },
-    { name: 'Contact', to: '/contact' },
+    { name: 'Home', sectionId: 'home' },
+    { name: 'About', sectionId: 'about' },
+    { name: 'Skills', sectionId: 'skills' },
+    { name: 'Projects', sectionId: 'projects' },
+    { name: 'Contact', sectionId: 'contact' },
   ];
 
   return (
     <nav className="bg-gray-900 p-4 fixed w-full z-20 shadow-lg h-16">
       <div className="container mx-auto flex justify-between items-center">
         <motion.div
-          className="flex items-center"
+          className="flex items-center cursor-pointer"
           whileHover="hover"
           variants={logoVariants}
+          onClick={() => scrollToSection('home')}
         >
-          
+          <span className="text-white text-xl font-bold">Portfolio</span>
           {/* Add logo here if needed */}
         </motion.div>
         <div className="hidden md:flex space-x-6">
@@ -50,9 +62,12 @@ const Navbar = () => {
               key={link.name}
               variants={linkVariants}
             >
-              <Link to={link.to} className="text-white hover:text-gray-400 transition duration-300">
+              <button 
+                onClick={() => scrollToSection(link.sectionId)}
+                className="text-white hover:text-gray-400 transition duration-300 bg-transparent border-none cursor-pointer"
+              >
                 {link.name}
-              </Link>
+              </button>
             </motion.div>
           ))}
         </div>
@@ -80,13 +95,12 @@ const Navbar = () => {
                 variants={linkVariants}
                 whileHover="hover"
               >
-                <Link
-                  to={link.to}
-                  className="block text-white px-4 py-2 hover:bg-gray-700 transition duration-300"
-                  onClick={() => setIsOpen(false)}
+                <button
+                  onClick={() => scrollToSection(link.sectionId)}
+                  className="block text-white px-4 py-2 hover:bg-gray-700 transition duration-300 w-full text-left bg-transparent border-none cursor-pointer"
                 >
                   {link.name}
-                </Link>
+                </button>
               </motion.div>
             ))}
           </motion.div>
