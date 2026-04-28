@@ -1,495 +1,127 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { Laptop, Gamepad2, ShoppingCart, ListTodo, ExternalLink, Sparkles, Zap, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 
 const Projects = () => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const [hoveredProject, setHoveredProject] = useState(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   const projects = [
     {
-      title: "Quiz App",
-      description: "A dynamic quiz application with multiple-choice questions and real-time scoring.",
-      icon: Laptop,
-      link: "https://danialchoudary.github.io/QuizApp/",
-      gradient: "from-cyan-500 to-blue-600",
-      glowColor: "rgba(6, 182, 212, 0.4)",
-      tech: ["React", "JavaScript", "CSS"],
-    },
-    {
-      title: "Tic Tac Toe Game",
-      description: "A classic Tic Tac Toe game with an interactive UI and simple game logic.",
-      icon: Gamepad2,
-      link: "https://danialchoudary.github.io/Tic-Tac-game/",
-      gradient: "from-purple-500 to-pink-600",
-      glowColor: "rgba(168, 85, 247, 0.4)",
-      tech: ["JavaScript", "HTML", "CSS"],
-    },
-    {
-      title: "E-Commerce Website",
-      description: "A fully functional e-commerce site with product listings, shopping cart, and checkout features.",
-      icon: ShoppingCart,
-      link: "https://ecommerce-project-self.vercel.app/",
-      gradient: "from-blue-500 to-indigo-600",
-      glowColor: "rgba(59, 130, 246, 0.4)",
-      tech: ["React"],
-    },
-    {
-      title: "Hospital Management System",
-      description: "A comprehensive hospital management system for managing patients, staff, and appointments efficiently.",
-      icon: ListTodo, // Replace with a relevant icon if available
+      title: "Hospital Management",
+      description: "A comprehensive system for managing patients, staff, and appointments efficiently. Built with scalable architecture in mind.",
       link: "https://hospital-management-system-seven-tawny.vercel.app/",
-      gradient: "from-green-500 to-teal-600",
-      glowColor: "rgba(16, 185, 129, 0.4)",
       tech: ["React", "Node.js", "MongoDB"],
+      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop", 
+      span: "md:col-span-2 lg:col-span-2", // Wide card
+    },
+    {
+      title: "E-Commerce Experience",
+      description: "A fully functional e-commerce site with product listings, dynamic cart, and checkout features.",
+      link: "https://ecommerce-project-self.vercel.app/",
+      tech: ["React", "Tailwind"],
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+      span: "col-span-1 md:col-span-1 lg:col-span-1", // Square card
+    },
+    {
+      title: "Quiz App",
+      description: "A dynamic quiz application with multiple-choice questions, interactive UI, and real-time scoring.",
+      link: "https://danialchoudary.github.io/QuizApp/",
+      tech: ["React", "CSS"],
+      image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=800&auto=format&fit=crop",
+      span: "col-span-1 md:col-span-1 lg:col-span-1", // Square card
+    },
+    {
+      title: "Tic Tac Toe",
+      description: "An interactive layout highlighting core game logic.",
+      link: "https://danialchoudary.github.io/Tic-Tac-game/",
+      tech: ["JavaScript", "HTML"],
+      image: "https://images.unsplash.com/photo-1611996575749-79a3a250f5b5?q=80&w=800&auto=format&fit=crop",
+      span: "md:col-span-2 lg:col-span-2", // Wide card
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.6, 0.05, 0.01, 0.9]
-      }
-    }
-  };
-
   return (
-    <section 
-      id="projects" 
-      ref={sectionRef}
-      className="relative min-h-screen bg-black overflow-hidden py-32"
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs */}
-        <motion.div
-          className="absolute top-1/4 -left-1/4 w-[900px] h-[900px] bg-blue-500/20 rounded-full blur-3xl"
-          style={{ y }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-1/4 w-[900px] h-[900px] bg-purple-500/20 rounded-full blur-3xl"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [-100, 100]) }}
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-cyan-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.4, 1],
-            rotate: [0, 180, 360],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-
-        {/* Grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black,transparent)]" />
+    <section className="py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 relative overflow-hidden">
+      
+      {/* Background Accent */}
+      <div className="absolute top-0 right-0 -mt-32 -mr-32 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         
-        {/* Floating particles */}
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1.5, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-
-        {/* Diagonal light streaks */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={`streak-${i}`}
-            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"
-            style={{
-              width: '300px',
-              top: `${15 + i * 25}%`,
-              left: '-300px',
-              transform: 'rotate(-30deg)',
-            }}
-            animate={{
-              x: ['0vw', '130vw'],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: i * 2,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Main Content */}
-      <motion.div
-        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8"
-        style={{ opacity }}
-      >
         {/* Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Decorative line with sparkles */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <motion.div
-              className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-32"
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-            />
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.3, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <Sparkles className="w-6 h-6 text-cyan-400" />
-            </motion.div>
-            <motion.div
-              className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-32"
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-            />
-          </div>
-
-          {/* Title */}
-          <motion.h1
-            className="text-6xl sm:text-7xl lg:text-8xl font-black uppercase tracking-wider mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+        <div className="mb-20 max-w-2xl">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-6"
           >
-            <motion.span 
-              className="inline-block bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent"
-              animate={{
-                backgroundPosition: ['0%', '100%', '0%'],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              style={{
-                backgroundSize: '200% auto',
-              }}
-            >
-              Projects
-            </motion.span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mt-6"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5 }}
+            Featured Work.
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xl text-gray-500 dark:text-gray-400"
           >
-            Explore my latest work featuring interactive web applications and creative solutions
+            A curated selection of projects demonstrating clean code and intuitive design.
           </motion.p>
+        </div>
 
-          {/* Stats badges */}
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-4 mt-8"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.7 }}
-          >
-            {[
-              { value: projects.length, label: 'Projects' },
-              { value: '100%', label: 'Responsive' },
-              { value: 'Live', label: 'Deployed' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                className="px-5 py-3 rounded-xl bg-gradient-to-r from-gray-900/80 to-gray-800/80 backdrop-blur-xl border border-cyan-500/30"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.8 + i * 0.1 }}
-                whileHover={{ scale: 1.05, borderColor: 'rgba(6, 182, 212, 0.6)' }}
-              >
-                <div className="text-cyan-400 text-2xl font-bold">{stat.value}</div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Projects Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
-        >
-          {projects.map((project, index) => {
-            const Icon = project.icon;
-            return (
-              <motion.div
-                key={project.title}
-                variants={itemVariants}
-                className="relative group"
-                onMouseEnter={() => setHoveredProject(project.title)}
-                onMouseLeave={() => setHoveredProject(null)}
-                whileHover={{ y: -15, scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-              >
-                {/* Glow effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    backgroundColor: project.glowColor,
-                  }}
-                  animate={hoveredProject === project.title ? {
-                    scale: [1, 1.1, 1],
-                  } : {}}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 auto-rows-[400px]">
+          {projects.map((project, index) => (
+            <motion.a
+              key={project.title}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`group relative overflow-hidden rounded-[2rem] bg-gray-100 dark:bg-[#1a1a1c] border border-transparent dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-all duration-500 ${project.span}`}
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-90 dark:opacity-60"
                 />
+                {/* Gradient Overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent dark:from-black/90 dark:via-black/50" />
+              </div>
 
-                {/* Card */}
-                <div className="relative bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-2xl rounded-3xl border border-gray-700/50 group-hover:border-cyan-500/50 overflow-hidden transition-all duration-500 h-full flex flex-col">
+              {/* Content */}
+              <div className="relative z-10 flex flex-col justify-end h-full p-8 sm:p-10">
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-3xl font-bold text-white mb-3 flex items-center gap-3">
+                    {project.title}
+                    <ArrowRight className="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" />
+                  </h3>
                   
-                  {/* Top accent bar */}
-                  <motion.div
-                    className={`h-1 bg-gradient-to-r ${project.gradient}`}
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    transition={{ delay: index * 0.1, duration: 0.8 }}
-                  />
+                  <p className="text-gray-200 dark:text-gray-300 text-lg leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-2">
+                    {project.description}
+                  </p>
 
-                  {/* Card content */}
-                  <div className="p-8 flex flex-col flex-grow">
-                    {/* Icon section */}
-                    <motion.div
-                      className="mb-6"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center shadow-2xl relative overflow-hidden`}>
-                        {/* Icon glow */}
-                        <motion.div
-                          className="absolute inset-0 bg-white/20"
-                          animate={{
-                            rotate: 360,
-                          }}
-                          transition={{
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "linear"
-                          }}
-                        />
-                        <Icon className="w-10 h-10 text-white relative z-10" strokeWidth={2} />
-                      </div>
-                    </motion.div>
-
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-400 leading-relaxed mb-6 flex-grow text-sm">
-                      {project.description}
-                    </p>
-
-                    {/* Tech stack tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech, i) => (
-                        <motion.span
-                          key={tech}
-                          className="px-3 py-1 rounded-full bg-gray-800/80 border border-gray-700/50 text-cyan-400 text-xs font-medium"
-                          initial={{ opacity: 0, scale: 0 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 + i * 0.05 }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-
-                    {/* View Project button */}
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative group/btn overflow-hidden rounded-xl bg-gradient-to-r from-gray-800/50 to-gray-700/50 border border-gray-600/50 hover:border-cyan-500/50 px-6 py-3 flex items-center justify-center space-x-2 transition-all duration-300"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      {/* Button glow */}
-                      <motion.div
-                        className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover/btn:opacity-20 transition-opacity duration-500`}
-                      />
-                      
-                      {/* Shimmer effect */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                        animate={{
-                          x: ['-100%', '200%'],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "linear",
-                          repeatDelay: 1
-                        }}
-                      />
-
-                      <span className="text-gray-300 group-hover/btn:text-white font-semibold relative z-10 transition-colors duration-300">
-                        View Project
-                      </span>
-                      <motion.div
-                        animate={hoveredProject === project.title ? { x: [0, 5, 0] } : {}}
-                        transition={{ duration: 1, repeat: Infinity }}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span 
+                        key={tech} 
+                        className="px-4 py-1.5 text-sm font-semibold bg-white/20 backdrop-blur-md text-white rounded-full border border-white/20 shadow-sm"
                       >
-                        <ArrowRight className="w-5 h-5 text-cyan-400 relative z-10" strokeWidth={2} />
-                      </motion.div>
-                    </motion.a>
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-
-                  {/* Shimmer overlay */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 pointer-events-none"
-                    animate={{
-                      x: ['-100%', '200%'],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "linear",
-                      repeatDelay: 2
-                    }}
-                  />
-
-                  {/* Corner brackets */}
-                  {[
-                    { top: 0, left: 0, rotate: 0 },
-                    { top: 0, right: 0, rotate: 90 },
-                    { bottom: 0, right: 0, rotate: 180 },
-                    { bottom: 0, left: 0, rotate: 270 },
-                  ].map((pos, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ ...pos, margin: '8px' }}
-                    >
-                      <div 
-                        className="w-full h-0.5 bg-cyan-400"
-                        style={{ transform: `rotate(${pos.rotate}deg)`, transformOrigin: 'left' }}
-                      />
-                      <div 
-                        className="w-0.5 h-full bg-cyan-400"
-                        style={{ transform: `rotate(${pos.rotate}deg)`, transformOrigin: 'top' }}
-                      />
-                    </motion.div>
-                  ))}
-
-                  {/* Floating particles on hover */}
-                  {hoveredProject === project.title && (
-                    <>
-                      {[...Array(8)].map((_, i) => (
-                        <motion.div
-                          key={`particle-${i}`}
-                          className="absolute w-1 h-1 rounded-full"
-                          style={{
-                            backgroundColor: project.glowColor,
-                            top: '50%',
-                            left: '50%',
-                          }}
-                          animate={{
-                            x: (Math.random() - 0.5) * 150,
-                            y: (Math.random() - 0.5) * 150,
-                            opacity: [1, 0],
-                            scale: [0, 1.5, 0],
-                          }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            delay: i * 0.15,
-                          }}
-                        />
-                      ))}
-                    </>
-                  )}
-
-                  {/* Corner decorations */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/5 to-transparent rounded-bl-full pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-500/5 to-transparent rounded-tr-full pointer-events-none" />
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </motion.div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+
+      </div>
     </section>
   );
 };

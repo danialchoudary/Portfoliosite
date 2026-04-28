@@ -50,7 +50,7 @@ const About = () => {
     <section 
       id="about" 
       ref={sectionRef}
-      className="relative min-h-screen bg-black overflow-hidden py-16"
+      className="relative min-h-screen bg-black"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
