@@ -1,8 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 
 const Projects = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const yOrb = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   const projects = [
     {
       title: "Hospital Management",
@@ -10,7 +18,7 @@ const Projects = () => {
       link: "https://hospital-management-system-seven-tawny.vercel.app/",
       tech: ["React", "Node.js", "MongoDB"],
       image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop", 
-      span: "md:col-span-2 lg:col-span-2", // Wide card
+      span: "md:col-span-2 lg:col-span-2",
     },
     {
       title: "E-Commerce Experience",
@@ -18,7 +26,7 @@ const Projects = () => {
       link: "https://ecommerce-project-self.vercel.app/",
       tech: ["React", "Tailwind"],
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
-      span: "col-span-1 md:col-span-1 lg:col-span-1", // Square card
+      span: "col-span-1 md:col-span-1 lg:col-span-1",
     },
     {
       title: "Quiz App",
@@ -26,7 +34,7 @@ const Projects = () => {
       link: "https://danialchoudary.github.io/QuizApp/",
       tech: ["React", "CSS"],
       image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=800&auto=format&fit=crop",
-      span: "col-span-1 md:col-span-1 lg:col-span-1", // Square card
+      span: "col-span-1 md:col-span-1 lg:col-span-1",
     },
     {
       title: "Tic Tac Toe",
@@ -34,15 +42,15 @@ const Projects = () => {
       link: "https://danialchoudary.github.io/Tic-Tac-game/",
       tech: ["JavaScript", "HTML"],
       image: "https://images.unsplash.com/photo-1611996575749-79a3a250f5b5?q=80&w=800&auto=format&fit=crop",
-      span: "md:col-span-2 lg:col-span-2", // Wide card
+      span: "md:col-span-2 lg:col-span-2",
     }
   ];
 
   return (
-    <section className="py-32 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 relative overflow-hidden">
+    <section ref={ref} className="py-32 bg-gray-50 dark:bg-[#0f0f11] transition-colors duration-300 relative overflow-hidden">
       
-      {/* Background Accent */}
-      <div className="absolute top-0 right-0 -mt-32 -mr-32 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Accent with subtle Scroll Parallax */}
+      <motion.div style={{ y: yOrb }} className="absolute top-0 right-0 -mt-32 -mr-32 w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
       
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         
@@ -80,17 +88,16 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`group relative overflow-hidden rounded-[2rem] bg-gray-100 dark:bg-[#1a1a1c] border border-transparent dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-all duration-500 ${project.span}`}
+              className={`group relative overflow-hidden rounded-[2rem] bg-white dark:bg-[#1a1a1c] border border-gray-200/50 dark:border-white/5 hover:border-gray-300 dark:hover:border-white/10 transition-all duration-500 shadow-sm hover:shadow-xl dark:shadow-none ${project.span}`}
             >
-              {/* Background Image */}
+              {/* Background Image with scaled hover */}
               <div className="absolute inset-0 z-0">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-90 dark:opacity-60"
+                  className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-700 opacity-90 dark:opacity-60"
                 />
-                {/* Gradient Overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent dark:from-black/90 dark:via-black/50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent dark:from-black/90 dark:via-black/50 transition-opacity duration-500 group-hover:opacity-90" />
               </div>
 
               {/* Content */}

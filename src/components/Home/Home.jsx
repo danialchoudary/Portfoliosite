@@ -1,23 +1,40 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transformations
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
+  const opacityText = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       
-      {/* Subtle Background Mesh */}
-      <div className="absolute inset-0 pointer-events-none flex justify-center items-center overflow-hidden">
+      {/* Background Mesh with Parallax */}
+      <motion.div 
+        style={{ y: yBg }} 
+        className="absolute inset-0 pointer-events-none flex justify-center items-center overflow-hidden"
+      >
         <motion.div
            initial={{ opacity: 0, scale: 0.8 }}
            animate={{ opacity: 1, scale: 1 }}
            transition={{ duration: 2, ease: "easeOut" }}
            className="w-[800px] h-[800px] bg-gradient-to-tr from-gray-200 via-gray-100 to-white dark:from-white/5 dark:via-transparent dark:to-transparent rounded-full blur-[100px] opacity-60 dark:opacity-40"
         />
-      </div>
+      </motion.div>
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+      <motion.div 
+        style={{ y: yText, opacity: opacityText }} 
+        className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center text-center"
+      >
         
         {/* Intro Tag */}
         <motion.div
@@ -79,7 +96,7 @@ const Home = () => {
           </a>
         </motion.div>
 
-      </div>
+      </motion.div>
     </div>
   );
 };

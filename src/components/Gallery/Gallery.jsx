@@ -1,7 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Gallery = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const yOrb = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   const images = [
     { url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop', title: 'Data Analytics', span: 'col-span-1 md:col-span-2 row-span-2' },
     { url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop', title: 'Business Intelligence', span: 'col-span-1 border-b' },
@@ -12,8 +20,12 @@ const Gallery = () => {
   ];
 
   return (
-    <section className="py-32 bg-gray-50 dark:bg-[#121212] transition-colors duration-300">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section ref={ref} className="py-32 bg-gray-50 dark:bg-[#0f0f11] transition-colors duration-300 relative overflow-hidden">
+      
+      {/* Background flare moving down opposite to scroll direction */}
+      <motion.div style={{ y: yOrb }} className="absolute -right-40 top-1/4 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -38,7 +50,7 @@ const Gallery = () => {
           {images.map((img, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
@@ -47,10 +59,10 @@ const Gallery = () => {
               <img 
                 src={img.url} 
                 alt={img.title} 
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.05]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                <span className="text-white font-bold text-2xl tracking-tight transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{img.title}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                <span className="text-white font-bold text-2xl tracking-tight transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{img.title}</span>
               </div>
             </motion.div>
           ))}
