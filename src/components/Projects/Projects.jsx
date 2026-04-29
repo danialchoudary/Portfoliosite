@@ -13,19 +13,43 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "SkillSync",
+      description: "Advanced MERN recruitment platform featuring AI-driven CV matching, RAG systems for applicant analysis, and real-time Kanban tracking.",
+      link: "https://skill-sync-66u1u1oft-danialchoudarys-projects.vercel.app/",
+      tech: ["MERN", "AI/RAG", "Socket.io"],
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop",
+      span: "md:col-span-3 lg:col-span-3",
+    },
+    {
+      title: "Neuroticure",
+      description: "A comprehensive mental health and wellness platform designed for therapy management, mood tracking, and patient support.",
+      link: "https://neuroticure.vercel.app/",
+      tech: ["React", "Firebase", "Tailwind"],
+      image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop",
+      span: "md:col-span-3 lg:col-span-3",
+    },
+    {
       title: "Hospital Management",
-      description: "A comprehensive system for managing patients, staff, and appointments efficiently. Built with scalable architecture in mind.",
+      description: "A comprehensive system for managing patients, staff, and appointments efficiently.",
       link: "https://hospital-management-system-seven-tawny.vercel.app/",
       tech: ["React", "Node.js", "MongoDB"],
       image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop", 
-      span: "md:col-span-2 lg:col-span-2",
+      span: "md:col-span-1 lg:col-span-1",
     },
     {
       title: "E-Commerce Experience",
-      description: "A fully functional e-commerce site with product listings, dynamic cart, and checkout features.",
+      description: "A fully functional e-commerce site with product listings and checkout features.",
       link: "https://ecommerce-project-self.vercel.app/",
       tech: ["React", "Tailwind"],
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+      span: "col-span-1 md:col-span-1 lg:col-span-1",
+    },
+    {
+      title: "Sarix Sports",
+      description: "Modern sports management portal focusing on athletic performance and equipment streamlining.",
+      link: "https://sarixsports.com/",
+      tech: ["Next.js", "Shopify", "Tailwind"],
+      image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
     },
     {
@@ -34,15 +58,7 @@ const Projects = () => {
       link: "https://danialchoudary.github.io/QuizApp/",
       tech: ["React", "CSS"],
       image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=800&auto=format&fit=crop",
-      span: "col-span-1 md:col-span-1 lg:col-span-1",
-    },
-    {
-      title: "Tic Tac Toe",
-      description: "An interactive layout highlighting core game logic.",
-      link: "https://danialchoudary.github.io/Tic-Tac-game/",
-      tech: ["JavaScript", "HTML"],
-      image: "https://images.unsplash.com/photo-1611996575749-79a3a250f5b5?q=80&w=800&auto=format&fit=crop",
-      span: "md:col-span-2 lg:col-span-2",
+      span: "md:col-span-3 lg:col-span-3",
     }
   ];
 

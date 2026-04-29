@@ -87,7 +87,7 @@ const Home = () => {
           </Link>
           
           <a
-            href="/Danial_Choudary_CV.pdf"
+            href="/Updated_Danial_Choudary_CV.pdf"
             download
             className="group flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-medium hover:bg-gray-50 dark:hover:bg-white/10 transition-colors"
           >
