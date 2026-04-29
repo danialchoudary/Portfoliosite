@@ -78,21 +78,21 @@ const Skills = () => {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{cat.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 mb-10 text-lg">{cat.description}</p>
                 
-                <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-6">
                   {cat.skills.map((skill, idx) => (
                     <motion.div
                       key={skill.name}
                       whileHover={{ scale: 1.03 }}
-                      className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-black/50 border border-gray-100 dark:border-white/5 shadow-sm"
+                      className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-white dark:bg-black/50 border border-gray-100 dark:border-white/5 shadow-sm"
                     >
-                      <div className="w-12 h-12 bg-gray-50 dark:bg-white/10 rounded-xl flex items-center justify-center p-2.5 flex-shrink-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-50 dark:bg-white/10 rounded-xl flex items-center justify-center p-2 flex-shrink-0">
                         <img 
                           src={skill.logo} 
                           alt={skill.name} 
                           className={`w-full h-full object-contain ${skill.invertDark ? 'dark:invert dark:opacity-90' : ''}`}
                         />
                       </div>
-                      <span className="font-semibold text-gray-800 dark:text-gray-200">{skill.name}</span>
+                      <span className="font-semibold text-sm sm:text-base text-gray-800 dark:text-gray-200 truncate">{skill.name}</span>
                     </motion.div>
                   ))}
                 </div>
