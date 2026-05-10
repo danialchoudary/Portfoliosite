@@ -15,7 +15,7 @@ const Projects = () => {
     {
       title: "SkillSync",
       description: "Advanced MERN recruitment platform featuring AI-driven CV matching, RAG systems for applicant analysis, and real-time Kanban tracking.",
-      link: "https://skill-sync-66u1u1oft-danialchoudarys-projects.vercel.app/",
+      link: "https://skill-sync-six-hazel.vercel.app/",
       tech: ["MERN", "AI/RAG", "Socket.io"],
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop",
       span: "md:col-span-3 lg:col-span-3",
