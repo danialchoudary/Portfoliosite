@@ -8,85 +8,79 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', system-ui, sans-serif;
+    /* Custom Scrollbar for a premium feel */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.3);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.5);
+  }
+
+  /* Elegant text selection */
+  ::selection {
+    background-color: rgba(17, 24, 39, 0.2);
+    color: inherit;
+  }
+
+  .dark ::selection {
+    background-color: rgba(243, 244, 246, 0.2);
+    color: inherit;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 transition-colors duration-300 ease-in-out;
+    @apply bg-[#F9FAFB] text-gray-900 transition-colors duration-300 ease-in-out;
+    /* Subtle noise pattern can be applied via before/after if needed, but keeping it clean for now */
   }
 
   .dark body {
-    @apply bg-black text-gray-100;
+    /* Deep OLED black for maximum contrast and premium feel */
+    @apply bg-[#050505] text-gray-100;
+  }
+}
+
+@layer utilities {
+  /* Premium Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+  }
+  
+  .dark .glass {
+    @apply bg-black/50 backdrop-blur-xl border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)];
+  }
+  
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/20 shadow-sm transition-all duration-300;
+  }
+  
+  .dark .glass-card {
+    @apply bg-white/[0.02] backdrop-blur-md border border-white/[0.05] shadow-sm transition-all duration-300;
+  }
+
+  /* Elegant Gradients */
+  .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500;
+  }
+
+  .dark .text-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500;
   }
 }
 
 section {
   scroll-margin-top: 5rem;
 }
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
