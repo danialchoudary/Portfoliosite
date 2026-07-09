@@ -20,65 +20,61 @@ const Contact = () => {
   };
 
   return (
-    <section ref={ref} className="py-32 bg-white dark:bg-[#020202] transition-colors duration-300 relative overflow-hidden">
+    <section ref={ref} className="py-32 bg-white dark:bg-black transition-colors duration-300 relative overflow-hidden">
       
       {/* Background flare with parallax scroll */}
-      <motion.div style={{ y: yOrb }} className="absolute bottom-1/4 left-1/4 -ml-40 -mb-40 w-[800px] h-[800px] bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-[150px] pointer-events-none" />
+      <motion.div style={{ y: yOrb }} className="absolute bottom-1/4 left-1/4 -ml-40 -mb-40 w-[600px] h-[600px] bg-pink-500/10 dark:bg-pink-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
         
-        <div className="text-center mb-24 max-w-2xl mx-auto">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <motion.h2 
-            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-6"
           >
-            Let's build something.
+            Let's start a project.
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xl text-gray-500 dark:text-gray-400 font-light"
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-500 dark:text-gray-400"
           >
-            I'm currently available for freelance work and open to new opportunities. Let's create an unforgettable experience together.
+            I'm currently available for freelance work and open to new opportunities.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[320px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-[300px]">
           
           {/* Email Card */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative bg-[#F9FAFB] dark:bg-[#0a0a0a] rounded-[2.5rem] p-10 flex flex-col justify-between overflow-hidden border border-gray-100 dark:border-white/[0.05] hover:border-gray-300 dark:hover:border-white/[0.1] transition-all duration-500 shadow-sm hover:shadow-xl dark:shadow-none"
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="group relative bg-[#f5f5f7] dark:bg-[#1a1a1c] rounded-[2rem] p-10 flex flex-col justify-between overflow-hidden border border-transparent dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-colors shadow-sm"
           >
-            {/* Subtle Inner Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent dark:from-white/[0.02] dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-            <div className="relative z-10 flex justify-between items-start">
-              <div className="w-16 h-16 bg-white dark:bg-white/[0.05] border border-gray-100 dark:border-white/[0.05] rounded-2xl flex items-center justify-center shadow-sm">
+            <div className="flex justify-between items-start">
+              <div className="w-16 h-16 bg-white dark:bg-white/10 rounded-2xl flex items-center justify-center shadow-lg shadow-gray-200/50 dark:shadow-none">
                 <Mail className="w-8 h-8 text-gray-900 dark:text-white" />
               </div>
               <button 
                 onClick={handleCopy}
-                className="w-12 h-12 rounded-full bg-white dark:bg-white/[0.05] border border-gray-100 dark:border-white/[0.05] flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-sm"
+                className="w-10 h-10 rounded-full bg-white dark:bg-white/10 flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
                 aria-label="Copy Email"
               >
-                {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5 text-gray-500 dark:text-gray-400" />}
+                {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5 text-gray-600 dark:text-gray-300" />}
               </button>
             </div>
             
-            <div className="relative z-10">
-              <h3 className="text-xl font-medium text-gray-900 dark:text-gray-300 mb-3 tracking-tight">Drop me an email</h3>
-              <a href="mailto:danialchoudary255@gmail.com" className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors break-all flex items-center gap-2 tracking-tight">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Drop me an email</h3>
+              <a href="mailto:danialchoudary255@gmail.com" className="text-2xl sm:text-3xl font-semibold text-blue-500 hover:text-blue-600 dark:text-blue-400 transition-colors break-all flex items-center gap-2">
                 danialchoudary...
-                <ArrowUpRight className="w-7 h-7 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-500 ease-[0.16,1,0.3,1]" />
+                <ArrowUpRight className="w-6 h-6 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
               </a>
             </div>
           </motion.div>
@@ -88,27 +84,24 @@ const Contact = () => {
             href="https://wa.me/923165320767"
             target="_blank"
             rel="noreferrer"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative bg-[#F9FAFB] dark:bg-[#0a0a0a] rounded-[2.5rem] p-10 flex flex-col justify-between overflow-hidden border border-gray-100 dark:border-white/[0.05] hover:border-gray-300 dark:hover:border-white/[0.1] transition-all duration-500 shadow-sm hover:shadow-xl dark:shadow-none"
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="group relative bg-[#f5f5f7] dark:bg-[#1a1a1c] rounded-[2rem] p-10 flex flex-col justify-between overflow-hidden border border-transparent dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10 transition-colors shadow-sm"
           >
-            {/* Subtle Inner Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent dark:from-green-900/10 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-            <div className="relative z-10 flex justify-between items-start">
-              <div className="w-16 h-16 bg-[#25D366] rounded-2xl flex items-center justify-center shadow-lg shadow-[#25D366]/20">
+            <div className="flex justify-between items-start">
+              <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
                 <MessageSquare className="w-8 h-8 text-white" />
               </div>
-              <div className="w-12 h-12 rounded-full bg-white dark:bg-white/[0.05] border border-gray-100 dark:border-white/[0.05] flex items-center justify-center group-hover:scale-105 transition-transform shadow-sm">
-                <ArrowUpRight className="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
+              <div className="w-10 h-10 rounded-full bg-white dark:bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+                <ArrowUpRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               </div>
             </div>
             
-            <div className="relative z-10">
-              <h3 className="text-xl font-medium text-gray-900 dark:text-gray-300 mb-3 tracking-tight">Message on WhatsApp</h3>
-              <p className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">+92 316 5320767</p>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Message on WhatsApp</h3>
+              <p className="text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-gray-200">+92 316 5320767</p>
             </div>
           </motion.a>
 

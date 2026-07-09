@@ -12,30 +12,23 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#F9FAFB] dark:bg-[#020202] text-gray-800 dark:text-gray-300 py-20 transition-colors duration-300 border-t border-gray-200 dark:border-white/[0.05]">
+    <footer className="bg-white dark:bg-[#1c1c1e] text-gray-800 dark:text-gray-200 py-16 transition-colors duration-300 border-t border-gray-200 dark:border-white/10">
       <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
-        <div className="flex flex-col items-center justify-center space-y-12">
+        <div className="flex flex-col items-center justify-center space-y-8">
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center space-y-4"
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold tracking-tight text-center"
           >
-             <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Let's build something amazing.
-             </h2>
-             <p className="text-gray-500 dark:text-gray-400 font-light">
-                Reach out and let's create a digital experience that stands out.
-             </p>
-          </motion.div>
+            Let's build something amazing.
+          </motion.h2>
 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="flex items-center space-x-6"
           >
             {socialLinks.map((social, index) => {
@@ -46,9 +39,9 @@ const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 bg-white dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.05] rounded-full hover:bg-gray-50 dark:hover:bg-white/[0.08] hover:scale-110 active:scale-95 transition-all duration-300 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white shadow-sm"
+                  className="p-3 bg-gray-100 dark:bg-white/5 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 hover:scale-105 transition-all duration-300 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
-                  <Icon className="w-5 h-5" strokeWidth={1.5} />
+                  <Icon className="w-5 h-5" strokeWidth={2} />
                 </a>
               );
             })}
@@ -57,17 +50,11 @@ const Footer = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-200 dark:border-white/[0.05] text-sm text-gray-400 dark:text-gray-500 font-medium tracking-wide"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-200 dark:border-white/10 text-sm text-gray-500 dark:text-gray-400"
           >
             <p>© {new Date().getFullYear()} Danial Choudary. All rights reserved.</p>
-            <p className="mt-4 sm:mt-0 flex items-center gap-1">
-              Engineered with 
-              <span className="text-gray-900 dark:text-white px-1">React</span> 
-              & 
-              <span className="text-gray-900 dark:text-white px-1">Tailwind CSS</span>
-            </p>
+            <p className="mt-2 sm:mt-0 font-medium">Built with React & Tailwind CSS</p>
           </motion.div>
 
         </div>
